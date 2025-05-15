@@ -10,7 +10,8 @@ public class RealParaEuro extends Armazenamento{
     public RealParaEuro() throws IOException, InterruptedException {
     }
 
-    URI endereco4 = URI.create("https://v6.exchangerate-api.com/v6/" + getSerial() + "/pair/BRL/EUR/");
+    //Requisição e resposta da API
+    URI endereco4 = URI.create("https://v6.exchangerate-api.com/v6/" + getKey() + "/pair/BRL/EUR/");
 
     HttpClient client = HttpClient.newHttpClient();
     HttpRequest request = HttpRequest.newBuilder()
@@ -21,8 +22,12 @@ public class RealParaEuro extends Armazenamento{
 
     Gson gson4 = new GsonBuilder()
             .create();
+
+    // Armazena o corpo da resposta da requisição
     String json4 = response.body();
 
+    //Utiliza a biblioteca gson para transformar um objeto json em um elemento TransmocaoJSON +
+    //o objeto transformacao4 está referenciando essa transformação
     TransformacaoJSON transformacao4 = gson4.fromJson(json4, TransformacaoJSON.class);
 
 }

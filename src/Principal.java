@@ -3,7 +3,14 @@ import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) throws IOException, InterruptedException {
+
+        // ***************************** IMPORTANTE **************************
+
+        //PARA RODAR O PROGRAMA CRIE SUA CHAVE API NO SITE https://www.exchangerate-api.com/
+        //COLOQUE A SUA CHAVE DENTRO DAS ASPAS DUPLA DA STRING key QUE ESTÁ NA CLASSE ARMAZENAMENTO
+
         Scanner leitura = new Scanner(System.in);
+        //Objetos criados para pegar informações das classes
         DolarParaReal conversao1 = new DolarParaReal();
         DolarParaEuro conversao2 = new DolarParaEuro();
         RealParaDolar conversao3 = new RealParaDolar();
@@ -11,9 +18,13 @@ public class Principal {
         EuroParaDolar conversao5 = new EuroParaDolar();
         EuroParaReal conversao6 = new EuroParaReal();
 
+        //Inicializa a variável opcaoDigitada como "vazia" para inicializar o loop do menu
         String opcaoDigitada = "";
 
-        while (!opcaoDigitada.equalsIgnoreCase("sair")) {
+        //Loop do menu de opções
+        //Verifica se a variável do tipo String opcaoDigitada é diferente de "sair"
+        //Enquanto a variável opcaoDigitada for diferente de sair, vai continuar rodando o código
+        while (!opcaoDigitada.equalsIgnoreCase("7")) {
             System.out.println("*********************************************************");
             System.out.println("*        Seja bem vindo/a ao Conversor de Moedas        *");
             System.out.println("*********************************************************");
@@ -26,14 +37,17 @@ public class Principal {
             System.out.println("7 - Sair");
             System.out.println("* Escolha uma opção válida: ");
 
+            // Armazena na variável opcaoDigitada a leitura do que for digitado no terminal
             opcaoDigitada = leitura.nextLine();
 
+            // Condição para encerrar o programa
             if (opcaoDigitada.equalsIgnoreCase("7")) {
                 System.out.println("Programa finalizado!");
                 break;
             }
 
-            if (opcaoDigitada.equalsIgnoreCase("1")) {// USD para BRL
+            // Condição para converter USD em BRL
+            if (opcaoDigitada.equalsIgnoreCase("1")) {
                 System.out.println("* Digite o valor em Dólar para converter em Real brasileiro:");
                 double dolar = leitura.nextDouble();
                 double converte = dolar * conversao1.transformacao1.getTaxaConversao();
@@ -41,7 +55,8 @@ public class Principal {
                 System.out.println(conversao1.transformacao1);
             }
 
-            if (opcaoDigitada.equalsIgnoreCase("2")) {   // USD para EUR
+            // Condição para converter USD para EUR
+            if (opcaoDigitada.equalsIgnoreCase("2")) {
                 System.out.println("* Digite o valor em Dólar para converter em Euro:");
                 double dolar = leitura.nextDouble();
                 double converte = dolar * conversao2.transformacao2.getTaxaConversao();
@@ -49,7 +64,8 @@ public class Principal {
                 System.out.println(conversao2.transformacao2);
             }
 
-            if (opcaoDigitada.equalsIgnoreCase("3")) {   // BRL para USD
+            // Condição para converter BRL para USD
+            if (opcaoDigitada.equalsIgnoreCase("3")) {
                 System.out.println("* Digite o valor em Real brasileiro para converter em Dólar:");
                 double dolar = leitura.nextDouble();
                 double converte = dolar * conversao3.transformacao3.getTaxaConversao();
@@ -57,7 +73,8 @@ public class Principal {
                 System.out.println(conversao3.transformacao3);
             }
 
-            if (opcaoDigitada.equalsIgnoreCase("4")) {   // BRL para EUR
+            // Condição para converter BRL para EUR
+            if (opcaoDigitada.equalsIgnoreCase("4")) {
                 System.out.println("* Digite o valor em Real brasileiro para converter em Euro:");
                 double dolar = leitura.nextDouble();
                 double converte = dolar * conversao4.transformacao4.getTaxaConversao();
@@ -65,7 +82,8 @@ public class Principal {
                 System.out.println(conversao4.transformacao4);
             }
 
-            if (opcaoDigitada.equalsIgnoreCase("5")) {   // EUR para USD
+            // Condição para converter EUR para USD
+            if (opcaoDigitada.equalsIgnoreCase("5")) {
                 System.out.println("* Digite o valor em Euro para converter em Dólar:");
                 double dolar = leitura.nextDouble();
                 double converte = dolar * conversao5.transformacao5.getTaxaConversao();
@@ -73,7 +91,8 @@ public class Principal {
                 System.out.println(conversao5.transformacao5);
             }
 
-            if (opcaoDigitada.equalsIgnoreCase("6")) {   // EUR para BRL
+            // Condição para converter EUR para BRL
+            if (opcaoDigitada.equalsIgnoreCase("6")) {
                 System.out.println("* Digite o valor em Euro para converter em Real brasileiro:");
                 double dolar = leitura.nextDouble();
                 double converte = dolar * conversao6.transformacao6.getTaxaConversao();

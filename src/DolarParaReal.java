@@ -11,7 +11,8 @@ public class DolarParaReal extends Armazenamento {
     public DolarParaReal() throws IOException, InterruptedException {
     }
 
-    URI endereco1 = URI.create("https://v6.exchangerate-api.com/v6/" + getSerial() + "/pair/USD/BRL/");
+    // Requisição e resposta da API
+    URI endereco1 = URI.create("https://v6.exchangerate-api.com/v6/" + getKey() + "/pair/USD/BRL/");
 
     HttpClient client = HttpClient.newHttpClient();
     HttpRequest request = HttpRequest.newBuilder()
@@ -22,8 +23,12 @@ public class DolarParaReal extends Armazenamento {
 
     Gson gson1 = new GsonBuilder()
             .create();
+
+    // Armazena o corpo da resposta da requisição
     String json1 = response.body();
 
+    //Utiliza a biblioteca gson para transformar um objeto json em um elemento TransmocaoJSON +
+    //o objeto transformacao1 está referenciando essa transformação
     TransformacaoJSON transformacao1 = gson1.fromJson(json1, TransformacaoJSON.class);
 
 

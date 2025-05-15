@@ -10,7 +10,8 @@ public class EuroParaDolar extends Armazenamento{
     public EuroParaDolar() throws IOException, InterruptedException {
     }
 
-    URI endereco5 = URI.create("https://v6.exchangerate-api.com/v6/" + getSerial() + "/pair/EUR/USD/");
+    // Requisição e resposta da API
+    URI endereco5 = URI.create("https://v6.exchangerate-api.com/v6/" + getKey() + "/pair/EUR/USD/");
 
     HttpClient client = HttpClient.newHttpClient();
     HttpRequest request = HttpRequest.newBuilder()
@@ -21,8 +22,12 @@ public class EuroParaDolar extends Armazenamento{
 
     Gson gson5 = new GsonBuilder()
             .create();
+
+    // Armazena o corpo da resposta da requisição
     String json5 = response.body();
 
+    //Utiliza a biblioteca gson para transformar um objeto json em um elemento TransmocaoJSON +
+    //o objeto transformacao5 está referenciando essa transformação
     TransformacaoJSON transformacao5 = gson5.fromJson(json5, TransformacaoJSON.class);
 
 }
